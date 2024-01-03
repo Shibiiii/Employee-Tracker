@@ -1,0 +1,14 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "A repository of code that will allow a company to track the information of their employees including department, roles, and employee names",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
