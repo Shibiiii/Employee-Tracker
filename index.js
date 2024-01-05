@@ -97,6 +97,65 @@ let employeeTracker = function () {
                     });
                 })
             });
-        } else if 
+        } else if (answers.prompt === 'Add A Employee') {
+            db.query(`SELECT * FROM employee, role`, (err, result) => {
+                if (err) throw err;
+
+                inquirer.prompt([
+                    {
+                        type: 'input',
+                        name: 'firstName',
+                        message: 'What is the employees first name?',
+                        validate: firstNameInput => {
+                            if (firstNameInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A First Name!');
+                                return false;
+                            }
+                        }
+                    },
+                    {
+                        type: 'input',
+                        name: 'lastName',
+                        message: 'What is the employees last name?',
+                        validate: lastNameInput => {
+                            if (lastNameInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A Salary!');
+                                return false;
+                            }
+                        }
+                    },
+                    {
+                        type: 'list',
+                        name: 'role',
+                        message: 'What is the employees role?',
+                        choices: () => {
+                            var array = [];
+                            for (var i = 0; i < result.length; i++) {
+                                array.push(result[i].title);
+                            }
+                            var newArray = [...new Set(array)];
+                            return newArray;
+                        }
+                    },
+                    {
+                        type: 'input',
+                        name: 'manager',
+                        message: 'Who is the employees manager?',
+                        validate: managerInput => {
+                            if (managerInput) {
+                                return true;
+                            } else {
+                                console.log('Please Add A Manager!');
+                                return false;
+                            }
+                        }
+                    }
+                ]).then
+            })
+        }
 });
 };
