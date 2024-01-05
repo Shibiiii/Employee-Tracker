@@ -28,6 +28,14 @@ var employeeTracker = function () {
                 console.table(result);
             employeeTracker();
             });
+        } else if (amswers.prompt === 'View All Employees') {
+            db.query(`SELECT * FROM employee`, (err, result) => {
+                if (err) throw err;
+                console.log('Viewing All Employees');
+                console.table(result);
+                employeeTracker()
+            });
+            
         }
     })
 };
