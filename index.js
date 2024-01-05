@@ -48,7 +48,13 @@ let employeeTracker = function () {
                         return false;
                     }
                 }
-            }])
-        }
+            }]).then((answers) => {
+                db.query(`INSERT INTO department (name) VALUES (?)`, [answers.department], (err, results) =>{
+                    if (err) throw err;
+                    console.log(`Added ${answers.department} to the database.`)
+                    employeeTracker();
+                })
+            })
+        } else if
 });
 };
